@@ -1,0 +1,24 @@
+{
+  "name": "weather_journal_app",
+  "version": "1.0.0",
+  "description": "## Overview This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Kamil Durhan",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code420kam/Weather-Journal-App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/code420kam/Weather-Journal-App/issues"
+  },
+  "homepage": "https://github.com/code420kam/Weather-Journal-App#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
