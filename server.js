@@ -30,8 +30,7 @@ app.get("/test", async (req, res) => {
     res.sendFile(path.join(__dirname, "/website/test.html"))
 })
 
-app.post("/test", async (req, res) => {
-    console.log(res.body)
+app.post("/", async (req, res) => {
 })
 
 
