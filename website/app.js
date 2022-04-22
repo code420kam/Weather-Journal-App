@@ -90,7 +90,6 @@ function renderEntry()
         const content = document.getElementById("content");
         const city = document.getElementById("location")
         //set the Element attributes
-        console.log(data)
         city.innerHTML = `Your Location is in the ${data.name} area`
         temperatur.innerHTML = `Temperature: ${data.temperature} °C`;
         actualDate.innerHTML = `Current Date: ${data.date}`;
