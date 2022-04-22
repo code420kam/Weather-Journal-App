@@ -1,6 +1,6 @@
 // Setup empty JS object to act as endpoint for all routes
 
-const projectData = {};
+let projectData = {};
 
 // Require Express to run server and routes
 const express = require("express")
@@ -23,15 +23,30 @@ app.use(express.static('website'));
 
 app.get("/", async(req, res) => {
     res.sendFile(path.join(__dirname,"/website/index.html"))
+    ;
 })
 
-app.get("/test", async (req, res) => {
+app.get("/all", async (req, res) => {
     
-    res.sendFile(path.join(__dirname, "/website/test.html"))
+    res.send(projectData)
 })
 
-app.post("/", async (req, res) => {
-})
+app.post("/all", addWeather);
+
+function addWeather(req, res){
+    const newWeatherData = {
+        temperature: req.body.temperature,
+        date: req.body.date,
+        feeling: req.body.feeling,
+        name: req.body.name
+    }
+    projectData = newWeatherData;
+    res.send(projectData); 
+    console.log(projectData)//Added code
+};
+
+
+
 
 
 app.listen(port, () => console.log(`Listen on Port ${port}`))

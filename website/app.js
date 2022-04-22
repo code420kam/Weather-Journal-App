@@ -48,7 +48,8 @@ async function getData()
         .then((response) => response.json())
         .then((user) => {
             //post response of Data to web page
-            postData(`/`, {temperature:user.main.temp, date: newDate, feelings, name: user.name})
+            user.feeling = feelings.value;
+            postData(`/all`, {temperature:user.main.temp, date: newDate, feeling: feelings.value, name: user.name})
             //rendering the Data
             renderEntry({temperatur:user.main.temp, date: newDate, resp: feelings, name:user.name})         
         });
@@ -57,8 +58,6 @@ async function getData()
         console.log(`${error.message} Error at getData()`)
     }
 }
-
-//post request
 const postData = async(url, data)=>{
     let body = data;
     const res = await fetch(url, {
