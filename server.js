@@ -8,7 +8,6 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const app = express()
 const port = 3000;
-
 // Start up an instance of app
 
 /* Middleware*/

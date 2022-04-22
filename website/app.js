@@ -51,7 +51,7 @@ async function getData()
             user.feeling = feelings.value;
             postData(`/all`, {temperature:user.main.temp, date: newDate, feeling: feelings.value, name: user.name})
             //rendering the Data
-            renderEntry({temperatur:user.main.temp, date: newDate, resp: feelings, name:user.name})         
+           renderEntry({temperatur:user.main.temp, date: newDate, resp: feelings, name:user.name})         
         });
     }
     catch(error){
@@ -79,13 +79,21 @@ const postData = async(url, data)=>{
 //rendering the response
 function renderEntry(userData)
 {
-    const actualDate = document.getElementById("date");
-    const temperatur = document.getElementById("temp");
-    const content = document.getElementById("content");
-    const city = document.getElementById("location")
+
     
-    city.innerHTML = `Your Location is in the ${userData.name} area`
-    temperatur.innerHTML = `Temperature: ${userData.temperatur} °C`;
-    actualDate.innerHTML = `Current Date: ${userData.date}`;
-    content.innerHTML = `Your mood are: ${feelings.value}`;
+    fetch("/all")
+    .then((data) => data.json())
+    .then((data) => {
+        //get the Html Elements from DOM
+        const actualDate = document.getElementById("date");
+        const temperatur = document.getElementById("temp");
+        const content = document.getElementById("content");
+        const city = document.getElementById("location")
+        //set the Element attributes
+        city.innerHTML = `Your Location is in the ${userData.name} area`
+        temperatur.innerHTML = `Temperature: ${userData.temperatur} °C`;
+        actualDate.innerHTML = `Current Date: ${userData.date}`;
+        content.innerHTML = `Your mood are: ${feelings.value}`;
+    })
+   
 }
